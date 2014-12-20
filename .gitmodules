@@ -1,0 +1,9 @@
+[submodule "submodulez/PJsip-CSharp"]
+	path = submodulez/PJsip-CSharp
+	url = https://github.com/moljac/PJSip-CSharp.git
+[submodule "submodulez/swig"]
+	path = submodulez/swig
+	url = https://github.com/moljac/swig.git
+[submodule "submodulez/pjsip4net"]
+	path = submodulez/pjsip4net
+	url = https://github.com/moljac/pjsip4net.git
