@@ -22,8 +22,7 @@ ARCH='-arch $IOS_ARCH' \
 	./configure-iphone \
 		--enable-opus-codec
 	
-make dep
-make
+make dep && make clean && make
 
 find . 		-type f -name "*.a" | xargs ls -al {}
 find `pwd` 	-type f -name "*.a" | xargs lipo -info {}
@@ -41,8 +40,8 @@ make distclean && make clean
 ARCH='-arch armv7s' \
 	./configure-iphone \
 		--enable-opus-codec
-make dep
-make
+		
+make dep && make clean && make
 
 find . 		-type f -name "*.a" | xargs ls -al {}
 find `pwd` 	-type f -name "*.a" | xargs lipo -info {}
@@ -62,9 +61,9 @@ make distclean && make clean
 ARCH='-arch armv64' \
 	./configure-iphone \
 		--enable-opus-codec
-make dep
-make
 
+make dep && make clean && make
+		
 find . 		-type f -name "*.a" | xargs ls -al {}
 find `pwd` 	-type f -name "*.a" | xargs lipo -info {}
 
@@ -82,9 +81,9 @@ ARCH='-arch i386' \
 	LDFLAGS="-O2 -m32 -mios-simulator-version-min=5.2" \
 	./configure-iphone \
 		--enable-opus-codec
-make dep
-make
 
+make dep && make clean && make
+		
 find . 		-type f -name "*.a" | xargs ls -al {}
 find `pwd` 	-type f -name "*.a" | xargs lipo -info {}
 
@@ -101,8 +100,8 @@ ARCH='-x86_64' \
 	LDFLAGS="-O2 -m32 -mios-simulator-version-min=5.2" \
 	./configure-iphone \
 		--enable-opus-codec
-make dep
-make
+
+make dep && make clean && make
 
 find . 		-type f -name "*.a" | xargs ls -al {}
 find `pwd` 	-type f -name "*.a" | xargs lipo -info {}
