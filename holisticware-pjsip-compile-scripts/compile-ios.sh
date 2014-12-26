@@ -1,6 +1,35 @@
 #/.bin/bash
 
-cd pjproject-2.3/
+PJSIPPROJECTFOLDER=pjproject-2.3
+
+cd pjprojcp -f \
+	config_site_ios.h \
+	../$PJSIPPROJECTFOLDER/pjlib/include/pj/config_site.h
+ls -al \
+	../$PJSIPPROJECTFOLDER/pjlib/include/pj/config_site.h
+cat \
+	../$PJSIPPROJECTFOLDER/pjlib/include/pj/config_site.h
+
+
+cd pjprojcp -f \
+	config_site_ios.h \
+	../$PJSIPPROJECTFOLDER/pjlib/include/pj/config_site.h
+ls -al \
+	../$PJSIPPROJECTFOLDER/pjlib/include/pj/config_site.h
+cat \
+	../$PJSIPPROJECTFOLDER/pjlib/include/pj/config_site.h
+
+cd $PJSIPPROJECTFOLDER/
+chmod 700 ./configure*
+./configure-iphone
+chmod 700 ./aconfigure
+
+brew install dos2unix
+
+dos2unix ./configure*
+dos2unix ./aconfigure
+
+ect-2.3/
 
 cp -f \
 	../holisticware-pjsip-config-site-files/config-site-mobile-ios.h \

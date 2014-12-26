@@ -1,8 +1,12 @@
 #/bin/bash
 
-cd /path/to/your/pjsip/dir
+PJSIPPROJECTFOLDER=pjproject-2.3
+
+cd ../$PJSIPPROJECTFOLDER
 
 export ANDROID_NDK_ROOT=~/Library/Developer/Xamarin/android-ndk/android-ndk-r8d
+./configure-android
+
 
 # APP_PLATFORM     
 #		Optionally specify the platform level used
