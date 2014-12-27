@@ -1,0 +1,1 @@
+#define PJ_CONFIG_MACOS 1

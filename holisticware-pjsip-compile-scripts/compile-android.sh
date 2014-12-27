@@ -2,10 +2,29 @@
 
 PJSIPPROJECTFOLDER=pjproject-2.3
 
+#---------------------------------------------------------------------------------------
+cp -f \
+	./holisticware-pjsip-compile-scripts/config-site-files/config-site-mobile-android.h \
+	./$PJSIPPROJECTFOLDER/pjlib/include/pj/config_site.h
+ls -al \
+	./$PJSIPPROJECTFOLDER/pjlib/include/pj/config_site.h
+cat \
+	./$PJSIPPROJECTFOLDER/pjlib/include/pj/config_site.h
+#---------------------------------------------------------------------------------------
+
 cd ../$PJSIPPROJECTFOLDER
 
 export ANDROID_NDK_ROOT=~/Library/Developer/Xamarin/android-ndk/android-ndk-r8d
 ./configure-android
+
+rm 		-fr 	../lib/android/
+mkdir 	-fr 	../lib/android/
+
+# Building with GNU tools (Linux, *BSD, MacOS X, mingw, etc.)
+# Generally these should be all that are needed to build the 
+#		libraries, 
+#		applications, and 
+#		samples
 
 
 # APP_PLATFORM     

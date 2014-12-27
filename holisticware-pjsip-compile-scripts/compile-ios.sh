@@ -1,25 +1,20 @@
-#/.bin/bash
+#/bin/bash
 
 PJSIPPROJECTFOLDER=pjproject-2.3
 
-cd pjprojcp -f \
-	config_site_ios.h \
-	../$PJSIPPROJECTFOLDER/pjlib/include/pj/config_site.h
+#---------------------------------------------------------------------------------------
+cp -f \
+	./holisticware-pjsip-compile-scripts/config-site-files/config-site-mobile-ios.h \
+	./$PJSIPPROJECTFOLDER/pjlib/include/pj/config_site.h
 ls -al \
-	../$PJSIPPROJECTFOLDER/pjlib/include/pj/config_site.h
+	./$PJSIPPROJECTFOLDER/pjlib/include/pj/config_site.h
 cat \
-	../$PJSIPPROJECTFOLDER/pjlib/include/pj/config_site.h
+	./$PJSIPPROJECTFOLDER/pjlib/include/pj/config_site.h
+#---------------------------------------------------------------------------------------
 
 
-cd pjprojcp -f \
-	config_site_ios.h \
-	../$PJSIPPROJECTFOLDER/pjlib/include/pj/config_site.h
-ls -al \
-	../$PJSIPPROJECTFOLDER/pjlib/include/pj/config_site.h
-cat \
-	../$PJSIPPROJECTFOLDER/pjlib/include/pj/config_site.h
+cd ./$PJSIPPROJECTFOLDER/
 
-cd $PJSIPPROJECTFOLDER/
 chmod 700 ./configure*
 ./configure-iphone
 chmod 700 ./aconfigure
@@ -29,17 +24,14 @@ brew install dos2unix
 dos2unix ./configure*
 dos2unix ./aconfigure
 
-ect-2.3/
+rm 		-fr 	../lib/ios/
+mkdir 	-fr 	../lib/ios/
 
-cp -f \
-	../holisticware-pjsip-config-site-files/config-site-mobile-ios.h \
-	pjlib/include/pj/config_site.h
-
-rm 		-fr 	../lib/ios
-rm 		-fr 	../lib
-
-mkdir 	-fr 	../lib
-mkdir 	-fr 	../lib/ios
+# Building with GNU tools (Linux, *BSD, MacOS X, mingw, etc.)
+# Generally these should be all that are needed to build the 
+#		libraries, 
+#		applications, and 
+#		samples
 
 #========================================================================
 # ARMv7:
@@ -49,8 +41,7 @@ IOS_ARCH=armv7
 make distclean && make clean
 ARCH='-arch $IOS_ARCH' \
 	./configure-iphone \
-		--enable-opus-codec
-	
+		--enable-opus-codec	
 make dep && make clean && make
 
 find . 		-type f -name "*.a" | xargs ls -al {}

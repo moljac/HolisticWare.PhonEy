@@ -2,17 +2,32 @@
 
 PJSIPPROJECTFOLDER=pjproject-2.3
 
+#---------------------------------------------------------------------------------------
+cp -f \
+	./holisticware-pjsip-compile-scripts/config-site-files/config-site-desktop-mac-osx.h \
+	./$PJSIPPROJECTFOLDER/pjlib/include/pj/config_site.h
+ls -al \
+	./$PJSIPPROJECTFOLDER/pjlib/include/pj/config_site.h
+cat \
+	./$PJSIPPROJECTFOLDER/pjlib/include/pj/config_site.h
+#---------------------------------------------------------------------------------------
+
+
+cd ./$PJSIPPROJECTFOLDER
 
 # Building with GNU tools (Linux, *BSD, MacOS X, mingw, etc.)
 # Generally these should be all that are needed to build the 
 #		libraries, 
 #		applications, and 
 #		samples
-cd ./$PJSIPPROJECTFOLDER
+
 
 make distclean && make clean
 ./configure
 make dep && make clean && make
+
+find . 		-type f -name "*.a" | xargs ls -al {}
+find `pwd` 	-type f -name "*.a" | xargs lipo -info {}
 
 #=====================================================================
 # test
