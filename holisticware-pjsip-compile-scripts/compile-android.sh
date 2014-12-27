@@ -1,6 +1,16 @@
 #/bin/bash
 
+
 PJSIPPROJECTFOLDER=pjproject-2.3
+PJSIP_MODULES=\
+"
+	pjlib
+	pjlib-util
+	pjmedia
+	pjnath
+	pjsip
+	third-party
+"
 
 #---------------------------------------------------------------------------------------
 cp -f \
@@ -12,13 +22,19 @@ cat \
 	./$PJSIPPROJECTFOLDER/pjlib/include/pj/config_site.h
 #---------------------------------------------------------------------------------------
 
-cd ../$PJSIPPROJECTFOLDER
+cd ./$PJSIPPROJECTFOLDER/
 
-export ANDROID_NDK_ROOT=~/Library/Developer/Xamarin/android-ndk/android-ndk-r8d
-./configure-android
+chmod 700 ./configure*
+chmod 700 ./aconfigure
 
-rm 		-fr 	../lib/android/
-mkdir 	-fr 	../lib/android/
+brew install dos2unix
+
+dos2unix ./configure*
+dos2unix ./aconfigure
+
+[ -d ../lib ] && ls -R ../lib/ || mkdir ../lib/
+rm 	  -fr 	../lib/android/
+mkdir 	 	../lib/android/
 
 # Building with GNU tools (Linux, *BSD, MacOS X, mingw, etc.)
 # Generally these should be all that are needed to build the 
@@ -40,47 +56,55 @@ mkdir 	-fr 	../lib/android/
 #				armeabi
 #		Only used when --use-ndk-cflags is specified
 
-#--------------------------------------------------------------------
-make distclean && make clean
-TARGET_ABI=armeabi-v7a \
-	./configure-android \
-	--use-ndk-cflags
-	
-make dep && make clean && make
-#--------------------------------------------------------------------
+ANDROID_ABIS=\
+"
+	armeabi
+	armeabi-v7a
+	x86
+	mips
+"
+
+for a in $ANDROID_ABIS
+	do
+		export ANDROID_NDK_ROOT=~/Library/Developer/Xamarin/android-ndk/android-ndk-r10d
+
+		echo $a
+		ANDROID_ABI=$a
+		echo ''"$a"''
+		
+		# https://trac.pjsip.org/repos/wiki/Getting-Started/Android
+		# http://www.bdsound.com/support/?p=190
+		# 
+		# TARGET_ABI=''"$a"' ' \
+		# APP_PLATFORM='android-10' \
+		# 		--use-ndk-cflags
+		make distclean && make clean
+		TARGET_ABI=''"$a"'' \
+		CFLAGS='-O3' \
+		LDFLAGS='-O3' \
+			./configure-android \
+			--use-ndk-cflags
+		make dep && make clean && make
+		
+
+		find . 		-type f -name "*.a" | xargs ls -al 
+		find `pwd` 	-type f -name "*.a" | xargs lipo -info 
+
+		rm 	  -fr 	../lib/android/$ANDROID_ABI/
+		mkdir  	 	../lib/android/$ANDROID_ABI/
+
+		for l in $PJSIP_MODULES
+			do
+				ls -alR ./$l/lib/
+				cp -f ./$l/lib/*.a ../lib/android/$ANDROID_ABI/
+		done
+done
 
 
 #--------------------------------------------------------------------
-make distclean && make clean
-TARGET_ABI=armeabi \
-	./configure-android \
-	--use-ndk-cflags
-	
-make dep && make clean && make
-#--------------------------------------------------------------------
 
 
-#--------------------------------------------------------------------
-make distclean && make clean
-TARGET_ABI=x86 \
-	./configure-android \
-	--use-ndk-cflags
-	
-make dep && make clean && make
-#--------------------------------------------------------------------
-
-
-#--------------------------------------------------------------------
-make distclean && make clean
-TARGET_ABI=mips \
-	./configure-android \
-	--use-ndk-cflags
-	
-make dep && make clean && make
-#--------------------------------------------------------------------
-
-
-
+#http://www.bdsound.com/support/?p=190
 
 # compile with OpenSSL support and integrate it with PJSIP, 
 # TODO: 		compile OpenSSL
@@ -94,12 +118,14 @@ make dep && make clean && make
 # ./configure-android --with-ssl=/path/to/compiled-openssl-folder
 
 
-to build for other targets, e.g: arm64 (arm64-v8a), x86, or armv7, instead of just './configure-android', specify the target arch in TARGET_ABI and run it, for example:
-for some targets, there may be error like
+#to build for other targets, e.g: arm64 (arm64-v8a), x86, or armv7, instead of just 
+# './configure-android', specify the target arch in TARGET_ABI and run it, for example:
+#or some targets, there may be error like
 # error: undefined reference to '__stack_chk_fail_local'
 # this can be fixed by adding -fno-stack-protector into CFLAGS, e.g: via user.mak file.
-# the ./configure-android is a wrapper that calls the standard ./configure script with settings suitable for Android target.
+# the ./configure-android is a wrapper that calls the standard ./configure script with 
+# settings suitable for Android target.
 # you may pass standard ./configure options to this script too.
-for more info, run ./configure-android --help
-other customizations are similar to what is explained in Building with GNU page.
+# for more info, run ./configure-android --help
+# other customizations are similar to what is explained in Building with GNU page.
 

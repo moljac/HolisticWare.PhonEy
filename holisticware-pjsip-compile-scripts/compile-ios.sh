@@ -1,6 +1,15 @@
 #/bin/bash
 
 PJSIPPROJECTFOLDER=pjproject-2.3
+PJSIP_MODULES=\
+"
+	pjlib
+	pjlib-util
+	pjmedia
+	pjnath
+	pjsip
+	third-party
+"
 
 #---------------------------------------------------------------------------------------
 cp -f \
@@ -16,7 +25,6 @@ cat \
 cd ./$PJSIPPROJECTFOLDER/
 
 chmod 700 ./configure*
-./configure-iphone
 chmod 700 ./aconfigure
 
 brew install dos2unix
@@ -24,8 +32,9 @@ brew install dos2unix
 dos2unix ./configure*
 dos2unix ./aconfigure
 
-rm 		-fr 	../lib/ios/
-mkdir 	-fr 	../lib/ios/
+[ -d ../lib ] && ls -R ../lib/ || mkdir ../lib/
+rm 	  -fr 	../lib/ios/
+mkdir 	 	../lib/ios/
 
 # Building with GNU tools (Linux, *BSD, MacOS X, mingw, etc.)
 # Generally these should be all that are needed to build the 
@@ -33,97 +42,56 @@ mkdir 	-fr 	../lib/ios/
 #		applications, and 
 #		samples
 
+
 #========================================================================
 # ARMv7:
 #	iPhone 		3GS, 4
 #	iPad		all but iPad4
-IOS_ARCH=armv7
-make distclean && make clean
-ARCH='-arch $IOS_ARCH' \
-	./configure-iphone \
-		--enable-opus-codec	
-make dep && make clean && make
-
-find . 		-type f -name "*.a" | xargs ls -al {}
-find `pwd` 	-type f -name "*.a" | xargs lipo -info {}
-
-rm 		-fr 	../lib/ios/$IOS_ARCH/
-mkdir 	-fr 	../lib/ios/$IOS_ARCH/
-
-#========================================================================
-
-#========================================================================
 # ARMv7s:
 #	iPhone 		5, 5c
 #	iPad		4
-make distclean && make clean
-ARCH='-arch armv7s' \
-	./configure-iphone \
-		--enable-opus-codec
-		
-make dep && make clean && make
-
-find . 		-type f -name "*.a" | xargs ls -al {}
-find `pwd` 	-type f -name "*.a" | xargs lipo -info {}
-
-rm 		-fr 	../lib/ios/armv7s/
-mkdir 	-fr 	../lib/ios/armv7s/
-
-find . -type f -name "*.a" | xargs ls -al {}
-#========================================================================
-
-
-#========================================================================
 # ARMv64:
 #	iPhone 		5s
 #	iPad		Air
-make distclean && make clean
-ARCH='-arch armv64' \
-	./configure-iphone \
-		--enable-opus-codec
-
-make dep && make clean && make
-		
-find . 		-type f -name "*.a" | xargs ls -al {}
-find `pwd` 	-type f -name "*.a" | xargs lipo -info {}
-
-#========================================================================
-
-
-#========================================================================
 # i386:
 #	iPhone 		Simulator
 #	iPad		Simulator
-make distclean && make clean
-export DEVPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/
-ARCH='-arch i386' \
-	CFLAGS="-O2 -m32 -mios-simulator-version-min=5.2" \
-	LDFLAGS="-O2 -m32 -mios-simulator-version-min=5.2" \
-	./configure-iphone \
-		--enable-opus-codec
 
-make dep && make clean && make
+IOS_ARCHITECTURES=\
+"
+	armv7
+	armv7s 
+	arm64 
+	i386 
+"	
+			
+for a in $IOS_ARCHITECTURES
+	do
+		echo $a
+		IOS_ARCH=$a
+		echo '-arch '"$a"' '
 		
-find . 		-type f -name "*.a" | xargs ls -al {}
-find `pwd` 	-type f -name "*.a" | xargs lipo -info {}
+		# https://trac.pjsip.org/repos/wiki/Getting-Started/iPhone
+		# http://www.sillycodes.com/2014/09/compiling-pjsip-for-different.html
+		make distclean && make clean
+		ARCH='-arch '"$a"' ' \
+		CFLAGS='-O3' \
+		LDFLAGS='-O3' \
+			./configure-iphone \
+				--enable-opus-codec
+			
+		make dep && make clean && make
 
-#========================================================================
+		find . 		-type f -name "*.a" | xargs ls -al 
+		find `pwd` 	-type f -name "*.a" | xargs lipo -info 
 
-#========================================================================
-# x86_64:
-#	iPhone 		Simulator
-#	iPad		Simulator
-make distclean && make clean
-export DEVPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/
-ARCH='-x86_64' \
-	CFLAGS="-O2 -m32 -mios-simulator-version-min=5.2" \
-	LDFLAGS="-O2 -m32 -mios-simulator-version-min=5.2" \
-	./configure-iphone \
-		--enable-opus-codec
+		rm 	  -fr 	../lib/ios/$IOS_ARCH/
+		mkdir  	 	../lib/ios/$IOS_ARCH/
 
-make dep && make clean && make
+		for l in $PJSIP_MODULES
+			do
+				ls -alR ./$l/lib/
+				cp -f ./$l/lib/*.a ../lib/ios/$IOS_ARCH/
+		done
+done
 
-find . 		-type f -name "*.a" | xargs ls -al {}
-find `pwd` 	-type f -name "*.a" | xargs lipo -info {}
-
-#========================================================================

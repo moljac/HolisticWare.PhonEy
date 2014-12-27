@@ -220,7 +220,7 @@ docs/workspace/sharpen/**
 src/samples/Components/**
 **/UpgradeLog.htm
 
-/docs/ubertesters.sdk.ios %
+**/docs/ubertesters.sdk.ios %
 
 
 #------------------------------------------
@@ -231,3 +231,4 @@ lib/**
 #------------------------------------------
 
 **/pjproject*
+./submodulez/pcre*
