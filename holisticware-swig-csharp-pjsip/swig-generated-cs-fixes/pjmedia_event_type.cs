@@ -6,8 +6,9 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
+namespace HolisticWare.PhonEy.WrapperPJSIP {
 
-public enum pjmedia_event_type {
+	public enum pjmedia_event_type {
   PJMEDIA_EVENT_NONE,
   PJMEDIA_EVENT_FMT_CHANGED = ((('H' << 24)|('C' << 16))|('M' << 8))|'F',
   PJMEDIA_EVENT_WND_CLOSING = ((('L' << 24)|('C' << 16))|('N' << 8))|'W',
@@ -17,4 +18,6 @@ public enum pjmedia_event_type {
   PJMEDIA_EVENT_KEYFRAME_FOUND = ((('F' << 24)|('R' << 16))|('F' << 8))|'I',
   PJMEDIA_EVENT_KEYFRAME_MISSING = ((('M' << 24)|('R' << 16))|('F' << 8))|'I',
   PJMEDIA_EVENT_ORIENT_CHANGED = ((('T' << 24)|('N' << 16))|('R' << 8))|'O'
+}
+
 }

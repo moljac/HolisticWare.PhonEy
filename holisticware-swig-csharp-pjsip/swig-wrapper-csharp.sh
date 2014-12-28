@@ -19,4 +19,11 @@ swig \
 	-o pjsua2_wrap.cpp \
 	../pjsua2.i
 
-ls -al
+	
+ls -al 
+cp * ../../../../../holisticware-pjsip-ntefx/swig-generated/
+ls -al ../../../../../holisticware-pjsip-ntefx/swig-generated/
+
+cp -f \
+	../../../../../holisticware-swig-csharp-pjsip/swig-generated-cs-fixes/* \
+	../../../../../holisticware-pjsip-ntefx/swig-generated/
