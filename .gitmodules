@@ -7,3 +7,6 @@
 [submodule "submodulez/pjsip4net"]
 	path = submodulez/pjsip4net
 	url = https://github.com/moljac/pjsip4net.git
+[submodule "submodulez/SIPHON-SIP-Client-that-actually-compiles"]
+	path = submodulez/SIPHON-SIP-Client-that-actually-compiles
+	url = https://github.com/moljac/SIPHON-SIP-Client-that-actually-compiles.git

@@ -100,8 +100,27 @@ for a in $ANDROID_ABIS
 		done
 done
 
-
 #--------------------------------------------------------------------
+
+cd pjsip-apps/build
+make pjsua
+ 
+export PATH=$PATH:$ANDROID_NDK_ROOT
+cd ../src/pjsua/android
+ndk-build
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #http://www.bdsound.com/support/?p=190

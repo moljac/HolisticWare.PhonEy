@@ -95,3 +95,53 @@ for a in $IOS_ARCHITECTURES
 		done
 done
 
+
+# libpj-arm-apple-darwin9.a
+# libpjlib-util-arm-apple-darwin9.a
+# libpjmedia-arm-apple-darwin9.a
+# libpjmedia-audiodev-arm-apple-darwin9.a
+# libpjmedia-codec-arm-apple-darwin9.a
+# libpjmedia-videodev-arm-apple-darwin9.a
+# libpjnath-arm-apple-darwin9.a
+# libpjsdp-arm-apple-darwin9.a
+# libpjsip-arm-apple-darwin9.a
+# libpjsip-simple-arm-apple-darwin9.a
+# libpjsip-ua-arm-apple-darwin9.a
+# libpjsua-arm-apple-darwin9.a
+# libpjsua2-arm-apple-darwin9.a
+
+LIBS=\
+"
+	libpj 
+	libpjlib-util 
+	libpjmedia 
+	libpjmedia 
+	libpjmedia-codec 
+	libpjmedia-videodev 
+	libpjnath 
+	libpjsdp 
+	libpjsip 
+	libpjsip 
+	libpjsip-ua 
+	libpjsua 
+	libpjsua2 
+"
+
+for lib in $LIBS
+	do
+		echo $lib
+		lipo \
+			-output ../lib/ios/$lib-arm-apple-darwin9.a \
+			-create \
+				../lib/ios/arm64/$lib-arm-apple-darwin9.a \
+				../lib/ios/arm7/$lib-arm-apple-darwin9.a \
+				../lib/ios/arm7s/$lib-arm-apple-darwin9.a \
+				../lib/ios/i386/$lib-arm-apple-darwin9.a \
+								
+								
+		lipo -info 	../lib/ios/$lib-arm-apple-darwin9.a					
+								
+done
+
+ls -al ../lib/ios/
+	

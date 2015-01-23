@@ -8,6 +8,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.PhonEy.Wrapper
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.PhonEy.WrapperPJSIP.XamarinIIOS.DLLnetfx45", "HolisticWare.PhonEy.WrapperPJSIP.XamarinIIOS.DLLnetfx45\HolisticWare.PhonEy.WrapperPJSIP.XamarinIIOS.DLLnetfx45.csproj", "{64BEC21D-DC9B-401C-A361-1575D77D0509}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Phoney.XamarinComponent", "HolisticWare.Phoney.XamarinComponent\HolisticWare.Phoney.XamarinComponent.csproj", "{B1382FAD-B37F-455D-8A50-68CBC5E2D973}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Phoney.NuGetPackage", "HolisticWare.Phoney.NuGetPackage\HolisticWare.Phoney.NuGetPackage.csproj", "{E39DC591-AF84-4BC7-A6E0-7BCF753A3C57}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +30,14 @@ Global
 		{64BEC21D-DC9B-401C-A361-1575D77D0509}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64BEC21D-DC9B-401C-A361-1575D77D0509}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64BEC21D-DC9B-401C-A361-1575D77D0509}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1382FAD-B37F-455D-8A50-68CBC5E2D973}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1382FAD-B37F-455D-8A50-68CBC5E2D973}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1382FAD-B37F-455D-8A50-68CBC5E2D973}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1382FAD-B37F-455D-8A50-68CBC5E2D973}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E39DC591-AF84-4BC7-A6E0-7BCF753A3C57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E39DC591-AF84-4BC7-A6E0-7BCF753A3C57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E39DC591-AF84-4BC7-A6E0-7BCF753A3C57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E39DC591-AF84-4BC7-A6E0-7BCF753A3C57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

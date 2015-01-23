@@ -31,6 +31,44 @@ tools needed
 	1.	installed as package		
 	2.	compiled and installed from code		
 
+	
+	
+## Samples
+
+### iOS
+
+#### Tutorials HOWTOs
+
+*	[http://www.xianwenchen.com/blog/2014/06/09/how-to-make-an-ios-voip-app-with-pjsip-part-1/](http://www.xianwenchen.com/blog/2014/06/09/how-to-make-an-ios-voip-app-with-pjsip-part-1/)
+*	[https://tharindufit.wordpress.com/2010/06/18/how-to-compile-siphon-for-non-jail-broken-iphone-make-voip-calls-on-wifi/](https://tharindufit.wordpress.com/2010/06/18/how-to-compile-siphon-for-non-jail-broken-iphone-make-voip-calls-on-wifi/)
+*	[http://www.wenda.io/questions/189800/how-to-build-and-compile-pjsip-for-xcode-using-sample-code-ipjsua-to-test.html](http://www.wenda.io/questions/189800/how-to-build-and-compile-pjsip-for-xcode-using-sample-code-ipjsua-to-test.html)
+*	[http://www.phonesdevelopers.com/1726086/](http://www.phonesdevelopers.com/1726086/)
+*	[]()
+*	[]()
+
+
+#### Apps
+
+*	[https://code.google.com/p/siphon](https://code.google.com/p/siphon)
+*	[]()
+
+### Android 
+
+#### Tutorials HOWTOs
+
+*	[https://trac.pjsip.org/repos/wiki/Getting-Started/Android](https://trac.pjsip.org/repos/wiki/Getting-Started/Android)
+*	[http://stackoverflow.com/questions/20193956/how-to-use-pjsip-on-android-device-in-order-to-have-g-729-codec-functionality](http://stackoverflow.com/questions/20193956/how-to-use-pjsip-on-android-device-in-order-to-have-g-729-codec-functionality)
+*	[http://stackoverflow.com/questions/12936812/building-apjsua-sample-application-of-pjsip-for-android](http://stackoverflow.com/questions/12936812/building-apjsua-sample-application-of-pjsip-for-android)
+*	[http://www.bdsound.com/support/how-to-build-and-run-pjsip-2-2-with-bdimad-for-android/](http://www.bdsound.com/support/how-to-build-and-run-pjsip-2-2-with-bdimad-for-android/)
+*	[http://myandroidtuts.blogspot.com/2014/03/building-voip-application-in-android.html](http://myandroidtuts.blogspot.com/2014/03/building-voip-application-in-android.html)
+*	[https://srikayala.wordpress.com/2013/12/05/pjsip-for-android-installation-on-mac-osx-mavericks/](https://srikayala.wordpress.com/2013/12/05/pjsip-for-android-installation-on-mac-osx-mavericks/)
+
+#### Apps
+
+*	[]()
+*	[]()
+*	[]()
+*	[http://android.wooyd.org/](http://android.wooyd.org/)
 
 
 ## Steps	
