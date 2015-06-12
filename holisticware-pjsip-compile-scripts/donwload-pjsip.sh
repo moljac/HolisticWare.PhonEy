@@ -1,6 +1,7 @@
 #/bin/bash
 
-PJSIP_PROJECT=pjproject-2.3
+PJSIP_VERSION=2.4
+PJSIP_PROJECT=pjproject-$PJSIP_VERSION
 SRC_PJSIP_BZ2=$PJSIP_PROJECT.tar.bz2
 SRC_PJSIP_ZIP=$PJSIP_PROJECT.zip
 
@@ -16,7 +17,7 @@ if [ -f ./SRC_PJSIP_ZIP ]
 	else
 		echo "==================================================================="
 		echo "NOT FOUND: $SRC_PJSIP_ZIP" 	
-		curl -LOk http://www.pjsip.org/release/2.3/$SRC_PJSIP_ZIP
+		curl -LOk http://www.pjsip.org/release/$PJSIP_VERSION/$SRC_PJSIP_ZIP
 		unzip -u -d	$SRC_PJSIP_ZIP
 fi
 
@@ -28,8 +29,11 @@ if [ -f ./$SRC_PJSIP_BZ2 ]
 		tar xvfj 	$SRC_PJSIP_BZ2
 	else
 		echo "==================================================================="
-		echo "FOUND: $SRC_PJSIP_BZ2" 	
-		curl -LOk http://www.pjsip.org/release/2.3/$SRC_PJSIP_BZ2
+		echo "NOT FOUND: $SRC_PJSIP_BZ2" 	
+		curl -LOk http://www.pjsip.org/release/$PJSIP_VERSION/$SRC_PJSIP_BZ2
 		tar xvfj 	$SRC_PJSIP_BZ2
 fi
 
+ls -al \
+	*.zip \
+	*.tar.bz
