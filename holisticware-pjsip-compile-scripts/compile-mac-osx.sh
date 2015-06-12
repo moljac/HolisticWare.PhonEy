@@ -1,6 +1,7 @@
 #/bin/bash
 
-PJSIPPROJECTFOLDER=pjproject-2.3
+PJSIP_VERSION=2.4
+PJSIPPROJECTFOLDER=pjproject-$PJSIP_VERSION
 
 #---------------------------------------------------------------------------------------
 cp -f \
@@ -29,9 +30,14 @@ make dep && make clean && make
 find . 		-type f -name "*.a" | xargs ls -al {}
 find `pwd` 	-type f -name "*.a" | xargs lipo -info {}
 
+
+
+ls -al \	
+	./pjsip-apps/bin/
+
 #=====================================================================
 # test
-./pjsip-apps/bin/pjsua-x86_64-apple-darwin13.4.0 \
+./pjsip-apps/bin/pjsua-x86_64-apple-darwin14.3.0 \
 	sip:301@ideasip.com
 	
 	
