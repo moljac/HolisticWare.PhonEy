@@ -32,7 +32,7 @@ find `pwd` 	-type f -name "*.a" | xargs lipo -info {}
 
 
 
-ls -al \	
+ls -al \
 	./pjsip-apps/bin/
 
 #=====================================================================
