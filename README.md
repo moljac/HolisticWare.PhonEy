@@ -31,8 +31,7 @@ tools needed
 	1.	installed as package		
 	2.	compiled and installed from code		
 
-	
-	
+		
 ## Samples
 
 ### iOS
@@ -108,22 +107,25 @@ Manually converted to:
 	PJMEDIA_FORMAT_ILBC = ((('C' << 24)|('B' << 16))|('L' << 8))|'I',
 	PJMEDIA_FORMAT_RGB24 = ((('3' << 24)|('B' << 16))|('G' << 8))|'R',
 
-## Submodulez
+## git submodulez
 
-*	[]()
 *	[https://github.com/moljac/PJSip-CSharp.git](https://github.com/moljac/PJSip-CSharp.git)
 *	[https://github.com/moljac/pjsip4net.git](https://github.com/moljac/pjsip4net.git)
+*	[]()
 
 
+## Tools
 
-## swig
+###  CppSharp
+
+*	[https://github.com/mono/CppSharp](https://github.com/mono/CppSharp)
+
+
+### swig
 
 *	[http://www.swig.org/tutorial.html](http://www.swig.org/tutorial.html)
 *	[http://stackoverflow.com/questions/8168517/generating-java-interface-with-swig](http://stackoverflow.com/questions/8168517/generating-java-interface-with-swig)
 *	[http://stackoverflow.com/questions/4255806/swig-c-bindings-with-callback](http://stackoverflow.com/questions/4255806/swig-c-bindings-with-callback)
-*	[]()
-*	[]()
-*	[]()
 *	[]()
 
 
@@ -154,7 +156,5 @@ Manually converted to:
 
 	%include "module.hh"
 
-
-## pjsip
 
 
